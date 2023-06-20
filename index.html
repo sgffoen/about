@@ -6,8 +6,7 @@
   <script src="assets/js/header-footer.js"></script>
 </head>
 <body>
-  <!-- Add this line to include the header.html file -->
-  <iframe src="header.html" frameborder="0" scrolling="no" id="header-frame"></iframe>
+  <div id="header-container"></div>
 
   <div class="container">
     <h1>My Projects</h1>
@@ -19,7 +18,22 @@
     </ul>
   </div>
 
-  <!-- Add this line to include the footer.html file -->
-  <iframe src="footer.html" frameborder="0" scrolling="no" id="footer-frame"></iframe>
+  <div id="footer-container"></div>
+
+  <script>
+    // Fetch and inject header content
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-container').innerHTML = data;
+      });
+
+    // Fetch and inject footer content
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
 </body>
 </html>
