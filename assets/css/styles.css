@@ -2,7 +2,7 @@
 
 /* Header styles */
 header {
-    background-color: #333;
+    background-color: #fff;;
     color: #fff;
     padding: 10px;
   }
@@ -22,16 +22,16 @@ header {
   }
   
   header nav ul li a {
-    color: #fff;
+    color: white;
     text-decoration: none;
   }
   
   /* Footer styles */
   footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #fff;
+    color: black;
     padding: 10px;
-    text-align: center;
+    text-align: left;
   }
   
   /* General styles */
