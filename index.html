@@ -4,10 +4,43 @@
   <title>My Projects</title>
   <base href="https://sgffoen.github.io/sjg.github.io/">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <script src="assets/js/header-footer.js"></script>
+  <style>
+    /* Add your CSS styles here */
+    /* General styles */
+    body {
+      background-color: #fff;
+      color: #000;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 10px;
+      margin-left: 0; /* Align container to the left */
+    }
+
+    /* Header styles */
+    header {
+      padding: 10px;
+      color: black;
+      text-align: left;
+    }
+
+    /* Footer styles */
+    footer {
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
-  <div id="header-container"></div>
+  <header>
+    <!-- Header content here -->
+    <p>My Website Header</p>
+  </header>
 
   <div class="container">
     <h1>My Projects</h1>
@@ -19,22 +52,10 @@
     </ul>
   </div>
 
-  <div id="footer-container"></div>
+  <footer>
+    <!-- Footer content here -->
+    <p>My Website Footer</p>
+  </footer>
 
-  <script>
-    // Fetch and inject header content
-    fetch('header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-container').innerHTML = data;
-      });
-
-    // Fetch and inject footer content
-    fetch('footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
-      });
-  </script>
 </body>
 </html>

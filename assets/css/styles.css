@@ -1,49 +1,29 @@
-/* Add your CSS styles here */
+/* General styles */
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+  margin-left: 0; /* Align container to the left */
+}
 
 /* Header styles */
 header {
-    background-color: #fff;;
-    color: #fff;
-    padding: 10px;
-  }
-  
-  header h1 {
-    margin: 0;
-  }
-  
-  header nav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  header nav ul li {
-    display: inline;
-    margin-right: 10px;
-  }
-  
-  header nav ul li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  /* Footer styles */
-  footer {
-    background-color: #fff;
-    color: black;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  /* General styles */
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
+  padding: 10px;
+  color: black;
+  text-align: left;
+}
+
+/* Footer styles */
+footer {
+  padding: 10px;
+  text-align: left;
+}
+
