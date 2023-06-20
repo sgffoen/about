@@ -2,28 +2,51 @@
 body {
   background-color: #fff;
   color: #000;
-  font-family: Arial, sans-serif;
+  font-family: monospace;
   margin: 0;
   padding: 0;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 5px;
   margin-left: 0; /* Align container to the left */
+  margin-bottom: 0px;
 }
 
 /* Header styles */
 header {
-  padding: 10px;
+  width: 300px;
+  padding: 5px;
   color: black;
   text-align: left;
+  font-size: 12px;
+  font-family: monospace;
 }
 
 /* Footer styles */
 footer {
-  padding: 10px;
+  padding: 5px;
   text-align: left;
 }
 
+.footer-text {
+  font-size: 10px;
+  color: black;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li a:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* links color */
+a {
+  color: black;
+}

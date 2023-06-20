@@ -5,9 +5,7 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <header>
-    <p>My Website Header</p>
-  </header>
+  <div id="header-container"></div>
   
   <div class="container">
   <h1>Project 1</h1>
@@ -15,8 +13,23 @@
   <!-- Add more project details as needed -->
   </div>
 
-  <footer>
-    <p>My Website Footer</p>
-  </footer>
+  <div id="footer-container"></div>
+
+  <script>
+    // Fetch and inject header content
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-container').innerHTML = data;
+        });
+
+    // Fetch and inject footer content
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
+
 </body>
 </html>

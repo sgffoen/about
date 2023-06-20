@@ -2,60 +2,157 @@
 <html>
 <head>
   <title>My Projects</title>
-  <base href="https://sgffoen.github.io/about/">
   <link rel="stylesheet" href="assets/css/styles.css">
   <style>
-    /* Add your CSS styles here */
-    /* General styles */
-    body {
-      background-color: #fff;
-      color: #000;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+    table {
+      width: 100%;
+      border-collapse: collapse;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 10px;
-      margin-left: 0; /* Align container to the left */
-    }
-
-    /* Header styles */
-    header {
-      padding: 10px;
-      color: black;
+    th, td {
+      padding: 8px;
       text-align: left;
+      border-bottom: 1px solid #ddd;
     }
 
-    /* Footer styles */
-    footer {
-      padding: 10px;
-      text-align: left;
+    th.project,
+    td.project {
+      width: 300px; /* Adjust the value as needed */
+    }
+    th.description,
+    td.description {
+      width: 700px; /* Adjust the value as needed */
+    }
+    th.links,
+    td.links {
+      width: 200px; /* Adjust the value as needed */
+    }
+    th.category,
+    td.category {
+      width: 100px; /* Adjust the value as needed */
+    }
+
+    a.image-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #000;
+    }
+
+    a.image-link:hover {
+    background-color: #000;
+    color: #fff;
     }
   </style>
 </head>
 <body>
-  <header>
-    <!-- Header content here -->
-    <p>My Website Header</p>
-  </header>
 
-  <div class="container">
-    <h1>My Projects</h1>
-    <ul>
-      <li><a href="project1.html">Project 1</a></li>
-      <li><a href="project2.html">Project 2</a></li>
-      <li><a href="project3.html">Project 3</a></li>
-      <!-- Add more project list items as needed -->
-    </ul>
-  </div>
+<div id="header-container"></div>
 
-  <footer>
-    <!-- Footer content here -->
-    <p>My Website Footer</p>
-  </footer>
+<div class="container">
+  <h2>Filter</h2>
+  <button onclick="filterProjects('all')">All</button>
+  <button onclick="filterProjects('project')">Project</button>
+  <button onclick="filterProjects('research')">Research</button>
+  <button onclick="filterProjects('publication')">Publication</button>
+  <button onclick="filterProjects('teaching')">Teaching</button>
+</div>
+
+<div class="container">
+  <h2>All Projects</h2>
+  <table id="projectsTable">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Links</th>
+      <th>Tags</th>
+    </tr>
+
+    <tr>
+        <td class="project">OPEN PLANS</td>
+        <td class="description">OPEN PLANS is a collaborative online platform developed by Digital Building Technologies. It provides intuitive access to implicit architectural knowledge embedded in building floor plans. It is based on an open, expanding database of semantically labelled floor plans that can provide a basis for machine learning approaches in architectural research and design.</td>
+      <td class="links">
+        <a class="image-link" href="project1_image1.jpg"><u>Image 1</u></a>,
+        <a class="image-link" href="project1_image2.jpg"><u>Image 2</u></a>
+      </td>
+      <td class="category">Project</td>
+    </tr>
+    <!-- New Item -->
+    <tr>
+        <td class="project">OPEN PLANS</td>
+        <td class="description">Description 2</td>
+    <td class="links">
+        <a class="image-link" href="project2_image1.jpg"><u>Image 1</u></a>,
+        <a class="image-link" href="project2_image2.jpg"><u>Image 2</u></a>
+      </td>
+      <td class="category">Research</td>
+    </tr>
+    <!-- New Item -->
+    <tr>
+        <td class="project">OPEN PLANS</td>
+        <td class="description">Description 3</td>
+    <td class="links">
+        <a class="image-link" href="project3_image1.jpg"><u>Image 1</u></a>,
+        <a class="image-link" href="project3_image2.jpg"><u>Image 2</u></a>
+      </td>
+      <td class="category">Publication</td>
+    </tr>
+    <!-- New Item -->
+    <tr>
+        <td class="project">OPEN PLANS</td>
+        <td class="description">Description 4</td>
+    <td class="links">
+        <a class="image-link" href="project4_image1.jpg"><u>Image 1</u></a>,
+        <a class="image-link" href="project4_image2.jpg"><u>Image 2</u></a>
+      </td>
+      <td class="category">Teaching</td>
+    </tr>
+    <!-- New Item -->
+    <tr>
+        <td class="project">OPEN PLANS</td>
+        <td class="description">Description 4</td>
+    <td class="links">
+        <a class="image-link" href="project5_image1.jpg"><u>Image 1</u></a>,
+        <a class="image-link" href="project5_image2.jpg"><u>Image 2</u></a>
+      </td>
+      <td class="category">Teaching</td>
+    </tr>
+    <!-- Add more projects as needed -->
+  </table>
+</div>
+
+<div id="footer-container"></div>
+
+<script>
+  // Fetch and inject header content
+  fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('header-container').innerHTML = data;
+    });
+
+  // Fetch and inject footer content
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    });
+
+  function filterProjects(category) {
+    var table = document.getElementById('projectsTable');
+    var rows = table.getElementsByTagName('tr');
+
+    for (var i = 1; i < rows.length; i++) {
+      var row = rows[i];
+      var rowCategory = row.getElementsByTagName('td')[3].textContent;
+
+      if (category === 'all' || rowCategory.toLowerCase() === category.toLowerCase()) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    }
+  }
+</script>
 
 </body>
 </html>
