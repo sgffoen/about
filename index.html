@@ -8,151 +8,163 @@
       width: 100%;
       border-collapse: collapse;
     }
-
+  
     th, td {
       padding: 8px;
       text-align: left;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid transparent;
+      background-image: linear-gradient(to right, #000 33%, transparent 0%);
+      background-position: bottom;
+      background-size: 12px 1px; /* Adjust the first value to change the length of the dashes */
+      background-repeat: repeat-x;
     }
-
+  
     th.project,
     td.project {
-      width: 300px; /* Adjust the value as needed */
+      width: 300px;
     }
     th.description,
     td.description {
-      width: 700px; /* Adjust the value as needed */
+      width: 700px;
     }
     th.links,
     td.links {
-      width: 200px; /* Adjust the value as needed */
+      width: 200px;
     }
     th.category,
     td.category {
-      width: 100px; /* Adjust the value as needed */
+      width: 100px;
     }
-
+  
     a.image-link {
-    display: inline-block;
-    text-decoration: none;
-    color: #000;
+      display: inline-block;
+      text-decoration: none;
+      color: #000;
+    }
+  
+    a.image-link:hover {
+      background-color: #000;
+      color: #fff;
     }
 
-    a.image-link:hover {
-    background-color: #000;
-    color: #fff;
+    #toggleProjects {
+      cursor: pointer;
+      margin-bottom: 0px;
+      text-align: left; /* Align the element to the left */
+      width: fit-content; /* Adjust the width to fit the content */
+    }
+
+    #toggleProjects:hover span {
+      background-color: black;
+      color: white;
+    }
+
+    #toggleGallery {
+      cursor: pointer;
+      margin-bottom: 0px;
+      text-align: left; /* Align the element to the left */
+      width: fit-content; /* Adjust the width to fit the content */
+    }
+
+    #toggleGallery:hover span {
+      background-color: black;
+      color: white;
+    }
+
+    #projectsTable {
+      margin-bottom: 20px; /* Add margin at the bottom of the table */
     }
   </style>
+  
 </head>
 <body>
 
 <div id="header-container"></div>
 
 <div class="container">
-  <h2>Filter</h2>
-  <button onclick="filterProjects('all')">All</button>
-  <button onclick="filterProjects('project')">Project</button>
-  <button onclick="filterProjects('research')">Research</button>
-  <button onclick="filterProjects('publication')">Publication</button>
-  <button onclick="filterProjects('teaching')">Teaching</button>
-</div>
+  <!-- Clickable word -->
+  <div id="toggleProjects"><span><u>Selected works ></u></span></div>
 
-<div class="container">
-  <h2>All Projects</h2>
-  <table id="projectsTable">
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Links</th>
-      <th>Tags</th>
-    </tr>
+  <!-- Filter container -->
+  <div id="filterContainer" style="display: none;">
+    <h2>Filter</h2>
+    <button onclick="filterProjects('all')">All</button>
+    <button onclick="filterProjects('project')">Project</button>
+    <button onclick="filterProjects('research')">Research</button>
+    <button onclick="filterProjects('publication')">Publication</button>
+    <button onclick="filterProjects('teaching')">Teaching</button>
+  </div>
 
-    <tr>
+  <div class="container">
+    <h2 id="worksTitle" style="display: none;">All Works</h2>
+    <table id="projectsTable" style="display: none;">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Links</th>
+        <th>Tags</th>
+      </tr>
+
+      <tr>
         <td class="project">OPEN PLANS</td>
         <td class="description">OPEN PLANS is a collaborative online platform developed by Digital Building Technologies. It provides intuitive access to implicit architectural knowledge embedded in building floor plans. It is based on an open, expanding database of semantically labelled floor plans that can provide a basis for machine learning approaches in architectural research and design.</td>
-      <td class="links">
-        <a class="image-link" href="project1_image1.jpg"><u>Image 1</u></a>,
-        <a class="image-link" href="project1_image2.jpg"><u>Image 2</u></a>
-      </td>
-      <td class="category">Project</td>
-    </tr>
-    <!-- New Item -->
-    <tr>
+        <td class="links">
+          <a class="image-link" href="project1_image1.jpg"><u>Image 1</u></a>,
+          <a class="image-link" href="project1_image2.jpg"><u>Image 2</u></a>
+        </td>
+        <td class="category">Project</td>
+      </tr>
+      <!-- New Item -->
+      <tr>
         <td class="project">OPEN PLANS</td>
         <td class="description">Description 2</td>
-    <td class="links">
-        <a class="image-link" href="project2_image1.jpg"><u>Image 1</u></a>,
-        <a class="image-link" href="project2_image2.jpg"><u>Image 2</u></a>
-      </td>
-      <td class="category">Research</td>
-    </tr>
-    <!-- New Item -->
-    <tr>
+        <td class="links">
+          <a class="image-link" href="project2_image1.jpg"><u>Image 1</u></a>,
+          <a class="image-link" href="project2_image2.jpg"><u>Image 2</u></a>
+        </td>
+        <td class="category">Research</td>
+      </tr>
+      <!-- New Item -->
+      <tr>
         <td class="project">OPEN PLANS</td>
         <td class="description">Description 3</td>
-    <td class="links">
-        <a class="image-link" href="project3_image1.jpg"><u>Image 1</u></a>,
-        <a class="image-link" href="project3_image2.jpg"><u>Image 2</u></a>
-      </td>
-      <td class="category">Publication</td>
-    </tr>
-    <!-- New Item -->
-    <tr>
+        <td class="links">
+          <a class="image-link" href="project3_image1.jpg"><u>Image 1</u></a>,
+          <a class="image-link" href="project3_image2.jpg"><u>Image 2</u></a>
+        </td>
+        <td class="category">Publication</td>
+      </tr>
+      <!-- New Item -->
+      <tr>
         <td class="project">OPEN PLANS</td>
         <td class="description">Description 4</td>
-    <td class="links">
-        <a class="image-link" href="project4_image1.jpg"><u>Image 1</u></a>,
-        <a class="image-link" href="project4_image2.jpg"><u>Image 2</u></a>
-      </td>
-      <td class="category">Teaching</td>
-    </tr>
-    <!-- New Item -->
-    <tr>
+        <td class="links">
+          <a class="image-link" href="project4_image1.jpg"><u>Image 1</u></a>,
+          <a class="image-link" href="project4_image2.jpg"><u>Image 2</u></a>
+        </td>
+        <td class="category">Teaching</td>
+      </tr>
+      <!-- New Item -->
+      <tr>
         <td class="project">OPEN PLANS</td>
         <td class="description">Description 4</td>
-    <td class="links">
-        <a class="image-link" href="project5_image1.jpg"><u>Image 1</u></a>,
-        <a class="image-link" href="project5_image2.jpg"><u>Image 2</u></a>
-      </td>
-      <td class="category">Teaching</td>
-    </tr>
-    <!-- Add more projects as needed -->
-  </table>
+        <td class="links">
+          <a class="image-link" href="project5_image1.jpg"><u>Image 1</u></a>,
+          <a class="image-link" href="project5_image2.jpg"><u>Image 2</u></a>
+        </td>
+        <td class="category">Teaching</td>
+      </tr>
+      <!-- Add more projects as needed -->
+    </table>
+  </div>
+
+  <!-- Clickable word -->
+  <div id="toggleGallery"><span><u>Gallery ></u></span></div>
 </div>
 
 <div id="footer-container"></div>
 
-<script>
-  // Fetch and inject header content
-  fetch('header.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('header-container').innerHTML = data;
-    });
-
-  // Fetch and inject footer content
-  fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('footer-container').innerHTML = data;
-    });
-
-  function filterProjects(category) {
-    var table = document.getElementById('projectsTable');
-    var rows = table.getElementsByTagName('tr');
-
-    for (var i = 1; i < rows.length; i++) {
-      var row = rows[i];
-      var rowCategory = row.getElementsByTagName('td')[3].textContent;
-
-      if (category === 'all' || rowCategory.toLowerCase() === category.toLowerCase()) {
-        row.style.display = '';
-      } else {
-        row.style.display = 'none';
-      }
-    }
-  }
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
