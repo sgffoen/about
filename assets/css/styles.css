@@ -5,7 +5,7 @@ body {
   font-family: monospace;
   margin: 0;
   padding: 0;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .container {
@@ -14,7 +14,7 @@ body {
   padding: 5px;
   margin-left: 0; /* Align container to the left */
   margin-bottom: 0px;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 /* Header styles */
@@ -23,8 +23,9 @@ body {
   padding: 5px;
   color: black;
   text-align: left;
-  font-size: 14px;
+  font-size: 13px;
   font-family: monospace;
+  margin-bottom: 20px;
 }
 
 /* Mobile styles for the header */
@@ -40,11 +41,9 @@ body {
 footer {
   padding: 5px;
   text-align: left;
-}
-
-.footer-text {
-  font-size: 10px;
+  font-size: 13px;
   color: black;
+  margin-top: 120px;
 }
 
 ul {
@@ -61,3 +60,5 @@ ul li a:hover {
 a {
   color: black;
 }
+
+
