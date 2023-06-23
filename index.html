@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Projects</title>
+  <title>SIMON GRIFFIOEN</title>
   <link rel="stylesheet" href="assets/css/styles.css">
   <style>
     table {
       width: 100%;
       border-collapse: collapse;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
   
     th, td {
@@ -88,6 +93,15 @@
       gap: 100px;
       margin-top: 20px;
     } */
+    @media (max-width: 767px) {
+      .gallery-image {
+        width: 100%;
+        height: auto;
+        max-width: 375px;
+        background-size: cover;
+        background-position: center;
+      }
+    }
 
     .gallery-image {
       position: relative;
@@ -131,14 +145,18 @@
 
   <div class="container">
     <h2 id="worksTitle" style="display: none;">All Works</h2>
+    <div class="table-responsive">
     <table id="projectsTable" style="display: none;">
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Links</th>
-        <th>Tags</th>
-      </tr>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Links</th>
+          <th>Tags</th>
+        </tr>
+      </thead>
 
+      <tbody>
       <tr>
         <td class="project">OPEN PLANS</td>
         <td class="description">Open Plans is a collaborative online platform developed by Digital Building Technologies. It provides intuitive access to implicit architectural knowledge embedded in building floor plans. It is based on an open, expanding database of semantically labelled floor plans that can provide a basis for machine learning approaches in architectural research and design. Open Plans was made possible by funding from Innovedum.</td>
@@ -202,6 +220,7 @@
           <a class="image-link" href="assets/images/gt_image1.JPG"><u>Image 1</u></a>,
           <a class="image-link" href="assets/images/gt_image2.PNG"><u>Image 2</u></a>,
           <a class="image-link" href="assets/images/gt_image3.PNG"><u>Image 3</u></a>,
+          <a class="image-link" href="assets/images/gt_image4.png"><u>Image 4</u></a>,
           <a class="website-link" href="https://www.youtube.com/watch?v=ylgq41JTbQ8" target="_blank"><u>Video</u></a>
         </td>
         <td class="category">Research</td>
@@ -255,7 +274,9 @@
         <td class="category">Design</td>
       </tr>
       <!-- Add more projects as needed -->
+      </tbody>
     </table>
+    </div>
   </div>
 
   <!-- Clickable word -->
