@@ -101,7 +101,12 @@ shuffledImages.forEach(function (image) {
 
 toggleGallery.addEventListener("click", function () {
   if (galleryContainer.style.display === "none") {
-    galleryContainer.style.display = "block";
+    galleryContainer.style.display = "flex";
+    galleryContainer.style.flexWrap = "wrap";
+    galleryContainer.style.justifyContent = "center";
+    galleryContainer.style.gap = "100px";
+    galleryContainer.style.marginTop = "20px";
+    galleryContainer.style.marginBottom = "60px";
     toggleGallery.innerHTML = '<span><u>Gallery &lt;</u></span>';
   } else {
     galleryContainer.style.display = "none";
@@ -118,21 +123,18 @@ var imageLinks = document.getElementsByClassName('image-link');
 
 // Attach click event listeners to the image links
 for (var i = 0; i < imageLinks.length; i++) {
-  imageLinks[i].addEventListener('click', showImage);
+  imageLinks[i].addEventListener('click', showImagePopup);
 }
 
-// Function to show the image
-function showImage(event) {
+// Function to open a pop-up window and display the image
+function showImagePopup(event) {
   event.preventDefault(); // Prevent the default link behavior
 
   var imageUrl = this.getAttribute('href'); // Get the image URL from the href attribute
 
-  // Create a new image element
-  var image = new Image();
-  image.src = imageUrl;
-
-  // Create a new window to display the image
-  var imageWindow = window.open('', '_blank');
-  imageWindow.document.write('<html><head><title>Image</title></head><body style="margin: 0; display: flex; justify-content: center; align-items: center;"><img src="' + imageUrl + '" style="max-width: 100%; max-height: 100%;"></body></html>');
+  // Open a new pop-up window with the image
+  var imageWindow = window.open('', '_blank', 'width=800,height=600');
+  imageWindow.document.write('<html><head><title>Image</title></head><body style="margin: 0; display: flex; justify-content: center; align-items: center; background-color: white;"><img src="' + imageUrl + '" style="max-width: 100%; max-height: 100%;"></body></html>');
   imageWindow.document.close();
+  imageWindow.focus();
 }

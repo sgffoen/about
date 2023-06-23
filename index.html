@@ -81,13 +81,13 @@
     }
 
     /* Additional CSS for the gallery grid */
-    .gallery-image {
+    /* .gallery-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 100px;
       margin-top: 20px;
-    }
+    } */
 
     .gallery-image {
       position: relative;
@@ -141,10 +141,11 @@
 
       <tr>
         <td class="project">OPEN PLANS</td>
-        <td class="description">OPEN PLANS is a collaborative online platform developed by Digital Building Technologies. It provides intuitive access to implicit architectural knowledge embedded in building floor plans. It is based on an open, expanding database of semantically labelled floor plans that can provide a basis for machine learning approaches in architectural research and design.</td>
+        <td class="description">Open Plans is a collaborative online platform developed by Digital Building Technologies. It provides intuitive access to implicit architectural knowledge embedded in building floor plans. It is based on an open, expanding database of semantically labelled floor plans that can provide a basis for machine learning approaches in architectural research and design. Open Plans was made possible by funding from Innovedum.</td>
         <td class="links">
           <a class="website-link" href="https://plans.arch.ethz.ch/#/" target="_blank"><u>Website</u></a>,
-          <a class="website-link" href="https://github.com/dbt-ethz/open-plans-ghpy" target="_blank"><u>Grasshopper</u></a>
+          <a class="website-link" href="https://github.com/dbt-ethz/open-plans-ghpy" target="_blank"><u>Grasshopper</u></a>,
+          <a class="website-link" href="https://ww2.lehrbetrieb.ethz.ch/id-workflows/faces/instances/Innovedum/ProzessInnovedum$1/188E7BE46E63FC60/innovedumPublic.Details/Details.xhtml" target="_blank"><u>Innovedum</u></a>
         </td>
         <td class="category">Research</td>
       </tr>
@@ -200,7 +201,8 @@
         <td class="links">
           <a class="image-link" href="assets/images/gt_image1.JPG"><u>Image 1</u></a>,
           <a class="image-link" href="assets/images/gt_image2.PNG"><u>Image 2</u></a>,
-          <a class="image-link" href="assets/images/gt_image3.PNG"><u>Image 3</u></a>
+          <a class="image-link" href="assets/images/gt_image3.PNG"><u>Image 3</u></a>,
+          <a class="website-link" href="https://www.youtube.com/watch?v=ylgq41JTbQ8" target="_blank"><u>Video</u></a>
         </td>
         <td class="category">Research</td>
       </tr>
@@ -257,13 +259,13 @@
   </div>
 
   <!-- Clickable word -->
-  <div id="toggleGallery"><span><u>Gallery <</u></span></div>
+  <div id="toggleGallery"><span><u>Gallery ></u></span></div>
 </div>
 
 <!-- Gallery section -->
 <div class="container">
   <h2 id="galleryTitle" style="display: none;">Gallery</h2>
-  <div class="gallery-container">
+  <div class="gallery-container" style="display: none;">
     <div class="gallery-image" style="background-image: url('assets/images/bt_image1.jpg');">
       <div class="image-caption">Beyond Transparency</div>
     </div>
