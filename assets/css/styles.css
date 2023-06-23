@@ -26,6 +26,8 @@ body {
   font-size: 13px;
   font-family: monospace;
   margin-bottom: 20px;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 
 /* Mobile styles for the header */
