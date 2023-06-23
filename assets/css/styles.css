@@ -31,9 +31,7 @@ body {
 /* Mobile styles for the header */
 @media (max-width: 767px) {
   #header-container {
-    width: 100%; /* Make the header full width */
-    font-size: 20px; /* Increase the font size for mobile devices */
-    /* Add any other mobile-specific styles you want */
+    width: 100%;
   }
 }
 
