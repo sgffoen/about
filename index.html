@@ -63,14 +63,40 @@
     }
 
     /* Media query for mobile phones */
-    @media (max-width: 767px) {
+    /* @media (max-width: 767px) {
       td.project {
         width: 70vw;
         min-width: 70vw;
       }
+    } */
+
+    @media (max-width: 767px) {
+      /* Hide table headers */
+      thead {
+        display: none;
+      }
+
+      /* Display table rows as blocks */
+      tr {
+        display: block;
+        margin-bottom: 20px; /* Add space between rows */
+        border-bottom: 5px double grey;
+      }
+
+      /* Set cells to display as blocks */
+      td {
+        display: block;
+        border: none; /* Remove the default cell border */
+        padding: 5px 10px; /* Adjust cell padding */
+      }
+
+      td.category {
+        background: none; /* Remove the background styling for the 'Category' cell */
+  }
+
     }
 
-  
+
     a.image-link {
       display: inline-block;
       text-decoration: underline;
