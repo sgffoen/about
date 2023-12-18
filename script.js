@@ -125,23 +125,45 @@ function topFunction() {
 
 
 
-// Get all the image links
-var imageLinks = document.getElementsByClassName('image-link');
+// Select all the row items in the table
+var rowItems = document.querySelectorAll('tr');
 
-// Attach click event listeners to the image links
-for (var i = 0; i < imageLinks.length; i++) {
-  imageLinks[i].addEventListener('click', showImagePopup);
-}
+// Iterate through each row item
+rowItems.forEach(function(rowItem) {
+  // Select all the image links within the current row item
+  var imageLinks = rowItem.querySelectorAll('.image-link');
+  var currentImageIndex = 0; // Track the index of the currently displayed image
 
-// Function to open a pop-up window and display the image
-function showImagePopup(event) {
-  event.preventDefault(); // Prevent the default link behavior
+  // Attach click event listeners to each image link within the current row item
+  imageLinks.forEach(function(link, index) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent default link behavior
+      currentImageIndex = index; // Update the current image index
+      showImagePopup(); // Call function to display the image popup
+    });
+  });
 
-  var imageUrl = this.getAttribute('href'); // Get the image URL from the href attribute
+  // Function to display the image popup
+  function showImagePopup() {
+    // Get the URL of the currently selected image
+    var imageUrl = imageLinks[currentImageIndex].getAttribute('href');
+    
+    // Open a new popup window
+    var imageWindow = window.open('', '_blank', 'width=800,height=600');
+    // Create the HTML content for the popup window
+    imageWindow.document.write('<html><head><title>Image</title></head><body style="margin: 0; display: flex; justify-content: center; align-items: center; background-color: white;"><img id="popupImage" src="' + imageUrl + '" style="max-width: 100%; max-height: 100%; cursor: pointer;"></body></html>');
+    imageWindow.document.close(); // Close the document writing
 
-  // Open a new pop-up window with the image
-  var imageWindow = window.open('', '_blank', 'width=800,height=600');
-  imageWindow.document.write('<html><head><title>Image</title></head><body style="margin: 0; display: flex; justify-content: center; align-items: center; background-color: white;"><img src="' + imageUrl + '" style="max-width: 100%; max-height: 100%;"></body></html>');
-  imageWindow.document.close();
-  imageWindow.focus();
-}
+    imageWindow.focus(); // Focus on the new popup window
+
+    // Get the image element in the popup window
+    var popupImage = imageWindow.document.getElementById('popupImage');
+    // Add a click event to the image in the popup to navigate to the next image
+    popupImage.onclick = function() {
+      currentImageIndex = (currentImageIndex + 1) % imageLinks.length; // Update index for the next image
+      imageUrl = imageLinks[currentImageIndex].getAttribute('href'); // Get the URL of the next image
+      popupImage.src = imageUrl; // Display the next image in the popup
+    };
+  }
+});
+
