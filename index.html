@@ -126,7 +126,6 @@
 
     #toggleProjects {
       cursor: pointer;
-      margin-top: 5px;
       text-align: left; /* Align the element to the left */
       width: fit-content; /* Adjust the width to fit the content */
     }
@@ -196,7 +195,7 @@
 
 <div class="container">
   <!-- Clickable word -->
-  <div id="toggleProjects"><span><u>Selected works ></u></span></div>
+  <div id="toggleProjects"><span><u>Index ></u></span></div>
 
   <!-- Filter container -->
   <div id="filterContainer" style="display: none;">
@@ -236,9 +235,9 @@
         <td class="project">OPEN PLANS</td>
         <td class="description">Open Plans is a collaborative online platform developed by Digital Building Technologies. It provides intuitive access to implicit architectural knowledge embedded in building floor plans. It is based on an open, expanding database of semantically labelled floor plans that can provide a basis for machine learning approaches in architectural research and design. Open Plans was made possible by funding from Innovedum.</td>
         <td class="links">
-          <a class="website-link" href="https://plans.arch.ethz.ch/#/" target="_blank">website</a>,
-          <a class="website-link" href="https://github.com/dbt-ethz/open-plans-ghpy" target="_blank">Grasshopper</a>,
-          <a class="website-link" href="https://innovedumprojekte.ethz.ch/2309/en" target="_blank">Innovedum</a>
+          <a class="website-link" href="https://plans.arch.ethz.ch/#/" target="_blank">homepage</a>,
+          <a class="website-link" href="https://github.com/dbt-ethz/open-plans-ghpy" target="_blank">plugin</a>,
+          <a class="website-link" href="https://innovedumprojekte.ethz.ch/2309/en" target="_blank">more info</a>
         </td>
         <td class="category">Research</td>
       </tr>
@@ -274,7 +273,7 @@
         <td class="project">Architectural Informatics Society 2022</td>
         <td class="description">Architectural Informatics Society 2022, Annual Academic Conference, Japan - Presentations Round table session: "Form Follows Availability".</td>
         <td class="links">
-          <a class="website-link" href="https://ais-j.org/" target="_blank">website</a>
+          <a class="website-link" href="https://ais-j.org/" target="_blank">more info</a>
         </td>
         <td class="category">Workshop</td>
       </tr>
@@ -283,7 +282,7 @@
         <td class="project">Architectural Informatics Society 2022</td>
         <td class="description">Architectural Informatics Society 2022, Annual Academic Conference, Japan - Presentations Round table session: "Who Owns What".</td>
         <td class="links">
-          <a class="website-link" href="https://ais-j.org/" target="_blank">website</a>
+          <a class="website-link" href="https://ais-j.org/" target="_blank">more info</a>
         </td>
         <td class="category">Workshop</td>
       </tr>
@@ -360,7 +359,7 @@
   </div>
 
   <!-- Clickable word -->
-  <div id="toggleGallery"><span><u>Gallery ></u></span></div>
+  <div id="toggleGallery"><span><u>Image ></u></span></div>
 </div>
 
 <!-- Gallery section -->
@@ -439,6 +438,9 @@
     <!-- Add more gallery images with captions as needed -->
   </div>
 </div>
+
+<!-- Text link to go back to the top -->
+<div onclick="topFunction()" id="goToTopLink" style="display: none;" title="Go to top">Back to Top</div>
 
 <div id="footer-container"></div>
 

@@ -49,12 +49,12 @@ toggleProjects.addEventListener("click", function () {
     filterContainer.style.display = "block";
     worksTitle.style.display = "block";
     projectsTable.style.display = "block";
-    toggleProjects.innerHTML = '<span><u>Selected Works &lt;</u></span>';
+    toggleProjects.innerHTML = '<span><u>Index &lt;</u></span>';
   } else {
     filterContainer.style.display = "none";
     worksTitle.style.display = "none";
     projectsTable.style.display = "none";
-    toggleProjects.innerHTML = '<span><u>Selected Works &gt;</u></span>';
+    toggleProjects.innerHTML = '<span><u>Index &gt;</u></span>';
   }
 });
 
@@ -107,14 +107,21 @@ toggleGallery.addEventListener("click", function () {
     galleryContainer.style.gap = "100px";
     galleryContainer.style.marginTop = "20px";
     galleryContainer.style.marginBottom = "60px";
-    toggleGallery.innerHTML = '<span><u>Gallery &lt;</u></span>';
+    toggleGallery.innerHTML = '<span><u>Image &lt;</u></span>';
+    // Show the "Back to Top" link
+    goToTopLink.style.display = "block";
   } else {
     galleryContainer.style.display = "none";
-    toggleGallery.innerHTML = '<span><u>Gallery &gt;</u></span>';
+    toggleGallery.innerHTML = '<span><u>Image &gt;</u></span>';
+    // Hide the "Back to Top" link
+    goToTopLink.style.display = "none";
   }
 });
 
-
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+}
 
 
 
