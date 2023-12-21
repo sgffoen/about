@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>sjg</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto+Slab&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/images/logo.png" sizes="16x16">
   <style>
+    /* TABLE */
     table {
       width: 100%;
       border-collapse: collapse;
@@ -20,29 +22,33 @@
       text-size-adjust: none;
       -webkit-text-size-adjust: none;
     }
-  
-    th, td {
+
+    th,
+    td {
       padding-bottom: 4px;
       padding-top: 4px;
       text-align: left;
       border-bottom: 1px solid transparent;
       background-image: linear-gradient(to right, #000 33%, transparent 0%);
       background-position: bottom;
-      background-size: 12px 1px; /* Adjust the first value to change the length of the dashes */
+      background-size: 12px 1px;
+      /* Adjust the first value to change the length of the dashes */
       background-repeat: repeat-x;
     }
-  
+
     th.project,
     td.project {
       min-width: 300px;
       font-size: 14px;
     }
+
     th.description,
     td.description {
       min-width: 700px;
       font-size: 14px;
       padding-right: 8px;
     }
+
     th.links,
     td.links {
       min-width: 200px;
@@ -50,65 +56,19 @@
       box-sizing: border-box;
       overflow-wrap: break-word;
     }
+
     th.category,
     td.category {
       min-width: 100px;
       font-size: 14px;
     }
 
-    /* Media query for mobile phones */
-    @media (max-width: 767px) {
-      td.description {
-        width: 95vw;
-        min-width: 95vw;
-      }
-    }
-
-    /* Media query for mobile phones */
-    /* @media (max-width: 767px) {
-      td.project {
-        width: 70vw;
-        min-width: 70vw;
-      }
-    } */
-
-    @media (max-width: 767px) {
-      /* Hide table headers */
-      thead {
-        display: none;
-      }
-
-      /* Display table rows as blocks */
-      tr {
-        display: block;
-        margin-bottom: 20px; /* Add space between rows */
-        border-bottom: 1px solid black;
-      }
-
-      /* Set cells to display as blocks */
-      td {
-        display: block;
-        border: none; /* Remove the default cell border */
-        padding: 5px 10px; /* Adjust cell padding */
-      }
-      
-      td.project {
-      font-style: italic;
-      }
-
-      td.category {
-        background: none; /* Remove the background styling for the 'Category' cell */
-      }
-
-    }
-
-
     a.image-link {
       display: inline-block;
       text-decoration: underline;
       color: #000;
     }
-  
+
     a.image-link:hover {
       background-color: #000;
       color: #fff;
@@ -127,8 +87,10 @@
 
     #toggleProjects {
       cursor: pointer;
-      text-align: left; /* Align the element to the left */
-      width: fit-content; /* Adjust the width to fit the content */
+      text-align: left;
+      /* Align the element to the left */
+      width: fit-content;
+      /* Adjust the width to fit the content */
     }
 
     #toggleProjects:hover span {
@@ -136,37 +98,24 @@
       color: white;
     }
 
+    #projectsTable {
+      margin-bottom: 20px;
+      /* Add margin at the bottom of the table */
+    }
+    
+    /* GALLERY */
     #toggleGallery {
       cursor: pointer;
       margin-bottom: 0px;
-      text-align: left; /* Align the element to the left */
-      width: fit-content; /* Adjust the width to fit the content */
+      text-align: left;
+      /* Align the element to the left */
+      width: fit-content;
+      /* Adjust the width to fit the content */
     }
 
     #toggleGallery:hover span {
       background-color: black;
       color: white;
-    }
-
-    #projectsTable {
-      margin-bottom: 20px; /* Add margin at the bottom of the table */
-    }
-
-    /* Additional CSS for the gallery grid */
-    /* .gallery-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 100px;
-      margin-top: 20px;
-    } */
-    @media (max-width: 767px) {
-      .gallery-image {
-        width: 100%;
-        height: auto;
-        background-size: cover;
-        background-position: center;
-      }
     }
 
     .gallery-image {
@@ -187,283 +136,398 @@
       font-size: 12px;
       text-align: center;
     }
+
+    /* Media query for mobile phones */
+    @media (max-width: 767px) {
+
+      td.description {
+        width: 95vw;
+        min-width: 95vw;
+      }
+
+      /* Hide table headers */
+      thead {
+        display: none;
+      }
+
+      /* Display table rows as blocks */
+      tr {
+        display: block;
+        margin-bottom: 20px;
+        /* Add space between rows */
+        border-bottom: 1px solid black;
+      }
+
+      /* Set cells to display as blocks */
+      td {
+        display: block;
+        border: none;
+        /* Remove the default cell border */
+        padding: 5px 10px;
+        /* Adjust cell padding */
+      }
+
+      td.project {
+        font-style: italic;
+      }
+
+      td.category {
+        background: none;
+        /* Remove the background styling for the 'Category' cell */
+      }
+
+      .gallery-image {
+        width: 100%;
+        height: auto;
+        background-size: cover;
+        background-position: center;
+      }
+
+    }
   </style>
-  
+
 </head>
+
 <body>
 
-<div id="header-container"></div>
-
-<div class="container">
-  <!-- Clickable word -->
-  <div id="toggleProjects"><span><u>Index ></u></span></div>
-
-  <!-- Filter container -->
-  <div id="filterContainer" style="display: none;">
-    <h4></h4>
-    <button onclick="filterProjects('all')">All</button>
-    <button onclick="filterProjects('design')">Design</button>
-    <button onclick="filterProjects('research')">Research</button>
-    <button onclick="filterProjects('publication')">Publication</button>
-    <button onclick="filterProjects('teaching')">Teaching</button>
-    <button onclick="filterProjects('workshop')">Workshop</button>
-  </div>
+  <div id="header-container"></div>
 
   <div class="container">
-    <h2 id="worksTitle" style="display: none;">All Works</h2>
-    <div class="table-responsive">
-    <table id="projectsTable" style="display: none;">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Links</th>
-          <th>Tags</th>
-        </tr>
-      </thead>
+    <!-- Clickable word -->
+    <div id="toggleProjects"><span><u>Index ></u></span></div>
 
-      <tbody>
-        <tr>
-          <td class="project">MAS DFAB - Digital Foundations</td>
-          <td class="description">Digital Foundations for the MAS in Architecture and Digital Fabrication is a projects based trimester to gain knowledge in computational design, robotic control, 3d printing and coding.</td>
-          <td class="links">
-            <a class="website-link" href="https://www.masdfab.arch.ethz.ch/program/studentwork" target="_blank">more info</a>
-          </td>
-          <td class="category">Teaching</td>
-        </tr>
-        <!-- New Item -->
-      <tr>
-        <td class="project">Circular Material Inventory for Circular Design Generation</td>
-        <td class="description">This thesis addresses the absence of a comprehensive system and 3D data that can
-           facilitate seamless reuse of construction materials within existing digital workflows. This work proposes a solution that explores
-             the use of an enhanced material database with a direct link to CAD software.
-             <br>Students: Jan Man Ki Law, Keng Chia Chang</td>
-        <td class="links">
-          <a class="website-link" href="https://www.masdfab.arch.ethz.ch/program/studentwork/2022-23-t3-work" target="_blank">thesis</a>
-        </td>
-        <td class="category">Teaching</td>
-      </tr>
-      <!-- New Item -->
-      <tr>
-        <td class="project">OPEN PLANS</td>
-        <td class="description">Open Plans is a collaborative online platform developed by Digital Building Technologies. It provides intuitive access to implicit architectural knowledge embedded in building floor plans. It is based on an open, expanding database of semantically labelled floor plans that can provide a basis for machine learning approaches in architectural research and design. Open Plans was made possible by funding from Innovedum.</td>
-        <td class="links">
-          <a class="website-link" href="https://plans.arch.ethz.ch/#/" target="_blank">homepage</a>,
-          <a class="website-link" href="https://github.com/dbt-ethz/open-plans-ghpy" target="_blank">plugin</a>,
-          <a class="website-link" href="https://innovedumprojekte.ethz.ch/2309/en" target="_blank">more info</a>,
-          <a class="image-link" href="assets/images/op_image1.gif">img1</a>
-        </td>
-        <td class="category">Research</td>
-      </tr>
-      <!-- New Item -->
-      <tr>
-        <td class="project">Augmented Reality (AR) based modeling of reconfigurable sand molds for float glass</td>
-        <td class="description">This thesis utilizes digitally reconfigurable sand molding for the
-           creation of freeform features in glass elements for architecture. This project investigates the geometric potentials,
-            limitations of the material system, and the fabrication process with the AR system.<br>Student: Ming-Yang Wang</td>
-        <td class="links">
-          <a class="website-link" href="https://works.arch.ethz.ch/faculty/benjamin-dillenburger" target="_blank">thesis</a>
-        </td>
-        <td class="category">Teaching</td>
-      </tr>
-      <!-- New Item -->
-      <tr>
-        <td class="project">Robotic Extrusions</td>
-        <td class="description">This MAS dfab 22/23 project focuses on material properties of 3D printing with PLA/PETG extrusion.</td>
-        <td class="links">
-          <a class="website-link" href="https://www.masdfab.com/2022-23-t1-robotic-extrusions" target="_blank">more info</a>
-        </td>
-        <td class="category">Teaching</td>
-      </tr>
-      <!-- New Item -->
-      <tr>
-        <td class="project">Deep SandScapes</td>
-        <td class="description">Deep Sandscapes: Design tool for robotic sand-shaping with GAN-based heightmap predictions.</td>
-        <td class="links">
-          <a class="website-link" href="https://scs.org/wp-content/uploads/2015/10/125_Paper_DEEP-SANDSCAPES-DESIGN-TOOL-FOR-ROBOTIC-SAND-SHAPING-WITH-GAN-BASED-HEIGHTMAP-PREDICTIONS.pdf" target="_blank">paper</a>
-        </td>
-        <td class="category">Publication</td>
-      </tr>
-      <!-- New Item -->
-      <tr>
-        <td class="project">Architectural Informatics Society 2022</td>
-        <td class="description">Architectural Informatics Society 2022, Annual Academic Conference, Japan - Presentations Round table session: "Form Follows Availability".</td>
-        <td class="links">
-          <a class="website-link" href="https://ais-j.org/" target="_blank">more info</a>
-        </td>
-        <td class="category">Workshop</td>
-      </tr>
-      <!-- New Item -->
-      <tr>
-        <td class="project">Architectural Informatics Society 2022</td>
-        <td class="description">Architectural Informatics Society 2022, Annual Academic Conference, Japan - Presentations Round table session: "Who Owns What".</td>
-        <td class="links">
-          <a class="website-link" href="https://ais-j.org/" target="_blank">more info</a>
-        </td>
-        <td class="category">Workshop</td>
-      </tr>
-      <!-- New Item -->
-      <tr>
-        <td class="project">Ground Truth</td>
-        <td class="description">Robotic sand-shaping with GAN-based simulations for intuitive design.</td>
-        <td class="links">
-          <a class="image-link" href="assets/images/gt_image1.JPG">img1</a>,
-          <a class="image-link" href="assets/images/gt_image2.PNG">img2</a>,
-          <a class="image-link" href="assets/images/gt_image3.PNG">img3</a>,
-          <a class="image-link" href="assets/images/gt_image4.png">img4</a>,
-          <a class="website-link" href="https://www.youtube.com/watch?v=ylgq41JTbQ8" target="_blank">video</a>
-        </td>
-        <td class="category">Research</td>
-      </tr>
-      <!-- New Item -->
-      <tr>
-        <td class="project">IROS 2021</td>
-        <td class="description">IROS 2021, Workshop: Digital Fabrication Sensing Additive Construction. Short-Paper:  "A robotic sand-shaping workflow informed by 3D Scanning and pix2pix GAN".</td>
-        <td class="links">
-          <a class="website-link" href="https://dfab.ch/events/iros-workshop-robotic-fabrication-sensing-in-additive-construction" target="_blank">more info</a>
-        </td>
-        <td class="category">Workshop</td>
-      </tr>
-      <!-- New Item -->
-      <tr>
-        <td class="project">Robotic Plaster Spraying</td>
-        <td class="description">Robotic plaster spraying is a project by Gramazio Kohler Research as part of the ETH MAS DFAB 20/21.</td>
-        <td class="links">
-          <a class="image-link" href='assets/images/irp_image1.jpg'>img1</a>,
-          <a class="image-link" href='assets/images/irp_image2.jpg'>img2</a>,
-          <a class="image-link" href='assets/images/irp_image3.jpg'>img3</a>,
-          <a class="image-link" href='assets/images/irp_image4.png'>img4</a>,
-          <a class="image-link" href='assets/images/irp_image7.png'>img5</a>,
-          <a class="image-link" href='assets/images/irp_image9.JPG'>img6</a>,
-          <a class="website-link" href="https://gramaziokohler.arch.ethz.ch/web/e/projekte/461.html" target="_blank">more info</a>
-        </td>
-        <td class="category">Design</td>
-      </tr>
-      <!-- New Item -->
-      <tr>
-        <td class="project">Beyond Transparency</td>
-        <td class="description">Robotic glass architecture: this glass pavilion is a project by Digital Building Technologies as part of the ETH MAS DFAB 20/21.</td>
-        <td class="links">
-          <a class="image-link" href='assets/images/bt_image1.jpg'>img1</a>,
-          <a class="image-link" href="assets/images/bt_image2.png">img2</a>,
-          <a class="image-link" href="assets/images/bt_image3.png">img3</a>,
-          <a class="image-link" href="assets/images/bt_image4.PNG">img4</a>,
-          <a class="image-link" href="assets/images/bt_image5.PNG">img5</a>,
-          <a class="image-link" href="assets/images/bt_image6.JPG">img6</a>,
-          <a class="website-link" href="https://dbt.arch.ethz.ch/project/beyond-transparency/" target="_blank">more info</a>
-        </td>
-        <td class="category">Design</td>
-      </tr>
-      <!-- New Item -->
-      <tr>
-        <td class="project">Amplify3D</td>
-        <td class="description">Facade 3D-printing with a custom robotic polymer extrusion setup. Fabrication-aware design strategies where explored for additively manufactured facades, as part of the ETH MAS DFAB 20/21.</td>
-        <td class="links">
-          <a class="image-link" href="assets/images/amplify3d_image1.jpg">img1</a>,
-          <a class="image-link" href="assets/images/amplify3d_image2.jpg">img2</a>,
-          <a class="image-link" href="assets/images/amplify3d_image3.jpg">img3</a>,
-          <a class="image-link" href="assets/images/amplify3d_image5.JPG">img4</a>,
-          <a class="image-link" href="assets/images/amplify3d_image8.png">img5</a>,
-          <a class="website-link" href="https://www.masdfab.com/2020-21-t1-3d-printed-facade" target="_blank">more info</a>
-        </td>
-        <td class="category">Design</td>
-      </tr>
-      <!-- Add more projects as needed -->
-      </tbody>
-    </table>
+    <!-- Filter container -->
+    <div id="filterContainer" style="display: none;">
+      <h4></h4>
+      <button onclick="filterProjects('all')">All</button>
+      <button onclick="filterProjects('design')">Design</button>
+      <button onclick="filterProjects('research')">Research</button>
+      <button onclick="filterProjects('publication')">Publication</button>
+      <button onclick="filterProjects('teaching')">Teaching</button>
+      <button onclick="filterProjects('workshop')">Workshop</button>
+    </div>
+
+    <div class="container">
+      <h2 id="worksTitle" style="display: none;">All Works</h2>
+      <div class="table-responsive">
+        <table id="projectsTable" style="display: none;">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Links</th>
+              <th>Tags</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <!-- New Item -->
+            <tr>
+              <td class="project">MAS DFAB - Digital Foundations</td>
+              <td class="description">Digital Foundations for the MAS in Architecture and Digital Fabrication is a
+                projects based trimester to gain knowledge in computational design, robotic control, 3d printing and
+                coding.</td>
+              <td class="links">
+                <a class="website-link" href="https://www.masdfab.arch.ethz.ch/program/studentwork" target="_blank">more
+                  info</a>
+              </td>
+              <td class="category">Teaching</td>
+            </tr>
+
+            <!-- New Item -->
+            <tr>
+              <td class="project">Circular Material Inventory for Circular Design Generation</td>
+              <td class="description">This thesis addresses the absence of a comprehensive system and 3D data that can
+                facilitate seamless reuse of construction materials within existing digital workflows. This work
+                proposes a solution that explores
+                the use of an enhanced material database with a direct link to CAD software.
+                <br>Students: Jan Man Ki Law, Keng Chia Chang
+              </td>
+              <td class="links">
+                <a class="website-link" href="https://www.masdfab.arch.ethz.ch/program/studentwork/2022-23-t3-work"
+                  target="_blank">thesis</a>
+              </td>
+              <td class="category">Teaching</td>
+            </tr>
+
+            <!-- New Item -->
+            <tr>
+              <td class="project">OPEN PLANS</td>
+              <td class="description">Open Plans is a collaborative online platform developed by Digital Building
+                Technologies. It provides intuitive access to implicit architectural knowledge embedded in building
+                floor plans. It is based on an open, expanding database of semantically labelled floor plans that can
+                provide a basis for machine learning approaches in architectural research and design. Open Plans was
+                made possible by funding from Innovedum.</td>
+              <td class="links">
+                <a class="website-link" href="https://plans.arch.ethz.ch/#/" target="_blank">homepage</a>,
+                <a class="website-link" href="https://github.com/dbt-ethz/open-plans-ghpy" target="_blank">plugin</a>,
+                <a class="website-link" href="https://innovedumprojekte.ethz.ch/2309/en" target="_blank">more info</a>,
+                <a class="image-link" href="assets/images/op_image1.gif"
+                  data-caption="Digital Building Technologies, ETH Zurich">img1</a>
+              </td>
+              <td class="category">Research</td>
+            </tr>
+
+            <!-- New Item -->
+            <tr>
+              <td class="project">Augmented Reality (AR) based modeling of reconfigurable sand molds for float glass
+              </td>
+              <td class="description">This thesis utilizes digitally reconfigurable sand molding for the
+                creation of freeform features in glass elements for architecture. This project investigates the
+                geometric potentials,
+                limitations of the material system, and the fabrication process with the AR system.<br>Student:
+                Ming-Yang Wang</td>
+              <td class="links">
+                <a class="website-link" href="https://works.arch.ethz.ch/faculty/benjamin-dillenburger"
+                  target="_blank">thesis</a>
+              </td>
+              <td class="category">Teaching</td>
+            </tr>
+
+            <!-- New Item -->
+            <tr>
+              <td class="project">Robotic Extrusions</td>
+              <td class="description">This MAS dfab 22/23 project focuses on material properties of 3D printing with
+                PLA/PETG extrusion.</td>
+              <td class="links">
+                <a class="website-link" href="https://www.masdfab.com/2022-23-t1-robotic-extrusions"
+                  target="_blank">more info</a>
+              </td>
+              <td class="category">Teaching</td>
+            </tr>
+
+            <!-- New Item -->
+            <tr>
+              <td class="project">Deep SandScapes</td>
+              <td class="description">Deep Sandscapes: Design tool for robotic sand-shaping with GAN-based heightmap
+                predictions.</td>
+              <td class="links">
+                <a class="website-link"
+                  href="https://scs.org/wp-content/uploads/2015/10/125_Paper_DEEP-SANDSCAPES-DESIGN-TOOL-FOR-ROBOTIC-SAND-SHAPING-WITH-GAN-BASED-HEIGHTMAP-PREDICTIONS.pdf"
+                  target="_blank">paper</a>
+              </td>
+              <td class="category">Publication</td>
+            </tr>
+
+            <!-- New Item -->
+            <tr>
+              <td class="project">Architectural Informatics Society 2022</td>
+              <td class="description">Architectural Informatics Society 2022, Annual Academic Conference, Japan -
+                Presentations Round table session: "Form Follows Availability".</td>
+              <td class="links">
+                <a class="website-link" href="https://ais-j.org/" target="_blank">more info</a>
+              </td>
+              <td class="category">Workshop</td>
+            </tr>
+
+            <!-- New Item -->
+            <tr>
+              <td class="project">Architectural Informatics Society 2022</td>
+              <td class="description">Architectural Informatics Society 2022, Annual Academic Conference, Japan -
+                Presentations Round table session: "Who Owns What".</td>
+              <td class="links">
+                <a class="website-link" href="https://ais-j.org/" target="_blank">more info</a>
+              </td>
+              <td class="category">Workshop</td>
+            </tr>
+
+            <!-- New Item -->
+            <tr>
+              <td class="project">Ground Truth</td>
+              <td class="description">Robotic sand-shaping with GAN-based simulations for intuitive design.</td>
+              <td class="links">
+                <a class="image-link" href="assets/images/gt_image1.JPG"
+                  data-caption="Simon Griffioen, Ko Tsuruta">img1</a>,
+                <a class="image-link" href="assets/images/gt_image2.PNG"
+                  data-caption="Simon Griffioen, Ko Tsuruta">img2</a>,
+                <a class="image-link" href="assets/images/gt_image3.PNG"
+                  data-caption="Simon Griffioen, Ko Tsuruta">img3</a>,
+                <a class="image-link" href="assets/images/gt_image4.png"
+                  data-caption="Simon Griffioen, Ko Tsuruta">img4</a>,
+                <a class="website-link" href="https://www.youtube.com/watch?v=ylgq41JTbQ8" target="_blank">video</a>
+              </td>
+              <td class="category">Research</td>
+            </tr>
+
+            <!-- New Item -->
+            <tr>
+              <td class="project">IROS 2021</td>
+              <td class="description">IROS 2021, Workshop: Digital Fabrication Sensing Additive Construction.
+                Short-Paper: "A robotic sand-shaping workflow informed by 3D Scanning and pix2pix GAN".</td>
+              <td class="links">
+                <a class="website-link"
+                  href="https://dfab.ch/events/iros-workshop-robotic-fabrication-sensing-in-additive-construction"
+                  target="_blank">more info</a>
+              </td>
+              <td class="category">Workshop</td>
+            </tr>
+
+            <!-- New Item -->
+            <tr>
+              <td class="project">Robotic Plaster Spraying</td>
+              <td class="description">Robotic plaster spraying is a project by Gramazio Kohler Research as part of the
+                ETH MAS DFAB 20/21.</td>
+              <td class="links">
+                <a class="image-link" href='assets/images/irp_image1.jpg'
+                  data-caption="Gramazio Kohler Research, ETH Zurich">img1</a>,
+                <a class="image-link" href='assets/images/irp_image2.jpg'
+                  data-caption="Gramazio Kohler Research, ETH Zurich">img2</a>,
+                <a class="image-link" href='assets/images/irp_image3.jpg'
+                  data-caption="Gramazio Kohler Research, ETH Zurich">img3</a>,
+                <a class="image-link" href='assets/images/irp_image4.png'
+                  data-caption="Gramazio Kohler Research, ETH Zurich">img4</a>,
+                <a class="image-link" href='assets/images/irp_image7.png'
+                  data-caption="Gramazio Kohler Research, ETH Zurich">img5</a>,
+                <a class="image-link" href='assets/images/irp_image9.JPG'
+                  data-caption="Gramazio Kohler Research, ETH Zurich">img6</a>,
+                <a class="website-link" href="https://gramaziokohler.arch.ethz.ch/web/e/projekte/461.html"
+                  target="_blank">more info</a>
+              </td>
+              <td class="category">Design</td>
+            </tr>
+
+            <!-- New Item -->
+            <tr>
+              <td class="project">Beyond Transparency</td>
+              <td class="description">Robotic glass architecture: this glass pavilion is a project by Digital Building
+                Technologies as part of the ETH MAS DFAB 20/21.</td>
+              <td class="links">
+                <a class="image-link" href='assets/images/bt_image1.jpg'
+                  data-caption="Digital Building Technologies, ETH Zurich">img1</a>,
+                <a class="image-link" href="assets/images/bt_image2.png"
+                  data-caption="Digital Building Technologies, ETH Zurich">img2</a>,
+                <a class="image-link" href="assets/images/bt_image3.png"
+                  data-caption="Digital Building Technologies, ETH Zurich">img3</a>,
+                <a class="image-link" href="assets/images/bt_image4.PNG"
+                  data-caption="Digital Building Technologies, ETH Zurich">img4</a>,
+                <a class="image-link" href="assets/images/bt_image5.PNG"
+                  data-caption="Digital Building Technologies, ETH Zurich">img5</a>,
+                <a class="image-link" href="assets/images/bt_image6.JPG"
+                  data-caption="Digital Building Technologies, ETH Zurich">img6</a>,
+                <a class="website-link" href="https://dbt.arch.ethz.ch/project/beyond-transparency/"
+                  target="_blank">more info</a>
+              </td>
+              <td class="category">Design</td>
+            </tr>
+            <!-- New Item -->
+            <tr>
+              <td class="project">Amplify3D</td>
+              <td class="description">Facade 3D-printing with a custom robotic polymer extrusion setup.
+                Fabrication-aware design strategies where explored for additively manufactured facades, as part of the
+                ETH MAS DFAB 20/21.</td>
+              <td class="links">
+                <a class="image-link" href="assets/images/amplify3d_image1.jpg"
+                  data-caption="Simon Griffioen, Evgenia Angelaki">img1</a>,
+                <a class="image-link" href="assets/images/amplify3d_image2.jpg"
+                  data-caption="Simon Griffioen, Evgenia Angelaki">img2</a>,
+                <a class="image-link" href="assets/images/amplify3d_image3.jpg"
+                  data-caption="Simon Griffioen, Evgenia Angelaki">img3</a>,
+                <a class="image-link" href="assets/images/amplify3d_image5.JPG"
+                  data-caption="Simon Griffioen, Evgenia Angelaki">img4</a>,
+                <a class="image-link" href="assets/images/amplify3d_image8.png"
+                  data-caption="Simon Griffioen, Evgenia Angelaki">img5</a>,
+                <a class="website-link" href="https://www.masdfab.com/2020-21-t1-3d-printed-facade" target="_blank">more
+                  info</a>
+              </td>
+              <td class="category">Design</td>
+            </tr>
+            <!-- Add more projects as needed -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Clickable word -->
+    <div id="toggleGallery"><span><u>Image ></u></span></div>
+  </div>
+
+  <!-- Gallery section -->
+  <div class="container">
+    <h2 id="galleryTitle" style="display: none;">Gallery</h2>
+    <div class="gallery-container" style="display: none;">
+      <div class="gallery-image" style="background-image: url('assets/images/bt_image1.jpg');">
+        <div class="image-caption">Beyond Transparency</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/bt_image2.png');">
+        <div class="image-caption">Beyond Transparency</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/bt_image3.png');">
+        <div class="image-caption">Beyond Transparency</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/bt_image4.PNG');">
+        <div class="image-caption">Beyond Transparency</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/bt_image5.PNG');">
+        <div class="image-caption">Beyond Transparency</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/bt_image6.JPG');">
+        <div class="image-caption">Beyond Transparency</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image1.jpg');">
+        <div class="image-caption">Amplify3D</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image2.jpg');">
+        <div class="image-caption">Amplify3D</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image3.jpg');">
+        <div class="image-caption">Amplify3D</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image4.JPG');">
+        <div class="image-caption">Amplify3D</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image5.JPG');">
+        <div class="image-caption">Amplify3D</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image6.JPG');">
+        <div class="image-caption">Amplify3D</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image7.png');">
+        <div class="image-caption">Amplify3D</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/irp_image1.jpg');">
+        <div class="image-caption">Robotic Plaster Spraying</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/irp_image2.jpg');">
+        <div class="image-caption">Robotic Plaster Spraying</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/irp_image3.jpg');">
+        <div class="image-caption">Robotic Plaster Spraying</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/irp_image4.png');">
+        <div class="image-caption">Robotic Plaster Spraying</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/irp_image6.png');">
+        <div class="image-caption">Robotic Plaster Spraying</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/irp_image8.jpg');">
+        <div class="image-caption">Robotic Plaster Spraying</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/irp_image9.JPG');">
+        <div class="image-caption">Robotic Plaster Spraying</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/gt_image1.JPG');">
+        <div class="image-caption">Ground Truth</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/gt_image2.PNG');">
+        <div class="image-caption">Ground Truth</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/gt_image3.PNG');">
+        <div class="image-caption">Ground Truth</div>
+      </div>
+      <div class="gallery-image" style="background-image: url('assets/images/op_image1.gif');">
+        <div class="image-caption">OPEN PLANS</div>
+      </div>
+      <!-- Add more gallery images with captions as needed -->
     </div>
   </div>
 
-  <!-- Clickable word -->
-  <div id="toggleGallery"><span><u>Image ></u></span></div>
-</div>
+  <!-- Text link to go back to the top -->
+  <div onclick="topFunction()" id="goToTopLink" style="display: none;" title="Go to top">Back to Top</div>
 
-<!-- Gallery section -->
-<div class="container">
-  <h2 id="galleryTitle" style="display: none;">Gallery</h2>
-  <div class="gallery-container" style="display: none;">
-    <div class="gallery-image" style="background-image: url('assets/images/bt_image1.jpg');">
-      <div class="image-caption">Beyond Transparency</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/bt_image2.png');">
-      <div class="image-caption">Beyond Transparency</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/bt_image3.png');">
-      <div class="image-caption">Beyond Transparency</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/bt_image4.PNG');">
-      <div class="image-caption">Beyond Transparency</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/bt_image5.PNG');">
-      <div class="image-caption">Beyond Transparency</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/bt_image6.JPG');">
-      <div class="image-caption">Beyond Transparency</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image1.jpg');">
-      <div class="image-caption">Amplify3D</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image2.jpg');">
-      <div class="image-caption">Amplify3D</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image3.jpg');">
-      <div class="image-caption">Amplify3D</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image4.JPG');">
-      <div class="image-caption">Amplify3D</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image5.JPG');">
-      <div class="image-caption">Amplify3D</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image6.JPG');">
-      <div class="image-caption">Amplify3D</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/amplify3d_image7.png');">
-      <div class="image-caption">Amplify3D</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/irp_image1.jpg');">
-      <div class="image-caption">Robotic Plaster Spraying</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/irp_image2.jpg');">
-      <div class="image-caption">Robotic Plaster Spraying</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/irp_image3.jpg');">
-      <div class="image-caption">Robotic Plaster Spraying</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/irp_image4.png');">
-      <div class="image-caption">Robotic Plaster Spraying</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/irp_image6.png');">
-      <div class="image-caption">Robotic Plaster Spraying</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/irp_image8.jpg');">
-      <div class="image-caption">Robotic Plaster Spraying</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/irp_image9.JPG');">
-      <div class="image-caption">Robotic Plaster Spraying</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/gt_image1.JPG');">
-      <div class="image-caption">Ground Truth</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/gt_image2.PNG');">
-      <div class="image-caption">Ground Truth</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/gt_image3.PNG');">
-      <div class="image-caption">Ground Truth</div>
-    </div>
-    <div class="gallery-image" style="background-image: url('assets/images/op_image1.gif');">
-      <div class="image-caption">OPEN PLANS</div>
-    </div>
-    <!-- Add more gallery images with captions as needed -->
-  </div>
-</div>
+  <div id="footer-container"></div>
 
-<!-- Text link to go back to the top -->
-<div onclick="topFunction()" id="goToTopLink" style="display: none;" title="Go to top">Back to Top</div>
-
-<div id="footer-container"></div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
+
 </html>

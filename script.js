@@ -143,27 +143,51 @@ rowItems.forEach(function(rowItem) {
     });
   });
 
-  // Function to display the image popup
-  function showImagePopup() {
-    // Get the URL of the currently selected image
-    var imageUrl = imageLinks[currentImageIndex].getAttribute('href');
-    
-    // Open a new popup window
-    var imageWindow = window.open('', '_blank', 'width=800,height=600');
-    // Create the HTML content for the popup window
-    imageWindow.document.write('<html><head><title>Image</title></head><body style="margin: 0; display: flex; justify-content: center; align-items: center; background-color: white;"><img id="popupImage" src="' + imageUrl + '" style="max-width: 100%; max-height: 100%; cursor: pointer;"></body></html>');
-    imageWindow.document.close(); // Close the document writing
+// Function to display the image popup
+function showImagePopup() {
+  // Get the URL of the currently selected image
+  var imageUrl = imageLinks[currentImageIndex].getAttribute('href');
+  
+  // Get the caption for the currently selected image
+  var imageCaption = imageLinks[currentImageIndex].getAttribute('data-caption');
+  
+  // Open a new popup window
+  var imageWindow = window.open('', '_blank', 'width=800,height=600');
+  
+  // Create the HTML content for the popup window
+  var popupContent = '<html><head><title>Image</title>';
+  popupContent += '<style>';
+  popupContent += 'body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }'; // Center content vertically and horizontally
+  popupContent += '.popup-content { text-align: center; background-color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; }'; // Set container for image and caption
+  popupContent += '.image-container { max-height: 90vh; }'; // Limit container height
+  popupContent += 'img { max-width: 100%; max-height: 100%; }'; // Limit image size
+  popupContent += '.caption-style { margin-top: 5px; font-family: Helvetica, Arial, sans-serif; font-size: 10px; }';
+  popupContent += '</style>';
+  popupContent += '</head><body class="popup-content">';
+  popupContent += '<div class="image-container">';
+  popupContent += '<img id="popupImage" src="' + imageUrl + '">';
+  popupContent += '</div>';
+  popupContent += '<p class="caption-style">&copy; ' + imageCaption + '</p>'; // Adding the caption with the copyright symbol
+  popupContent += '</body></html>';
 
-    imageWindow.focus(); // Focus on the new popup window
 
-    // Get the image element in the popup window
-    var popupImage = imageWindow.document.getElementById('popupImage');
-    // Add a click event to the image in the popup to navigate to the next image
-    popupImage.onclick = function() {
-      currentImageIndex = (currentImageIndex + 1) % imageLinks.length; // Update index for the next image
-      imageUrl = imageLinks[currentImageIndex].getAttribute('href'); // Get the URL of the next image
-      popupImage.src = imageUrl; // Display the next image in the popup
-    };
-  }
+  imageWindow.document.write(popupContent);
+  imageWindow.document.close(); // Close the document writing
+
+  imageWindow.focus(); // Focus on the new popup window
+
+  // Get the image element in the popup window
+  var popupImage = imageWindow.document.getElementById('popupImage');
+  
+  // Add a click event to the image in the popup to navigate to the next image
+  popupImage.onclick = function() {
+    currentImageIndex = (currentImageIndex + 1) % imageLinks.length; // Update index for the next image
+    imageUrl = imageLinks[currentImageIndex].getAttribute('href'); // Get the URL of the next image
+    imageCaption = '\u00A9 ' + imageLinks[currentImageIndex].getAttribute('data-caption'); // Adding the copyright symbol to the caption
+    popupImage.src = imageUrl; // Display the next image in the popup
+    imageWindow.document.querySelector('.caption-style').innerText = imageCaption; // Update the caption in the popup
+  };
+}
+
 });
 
