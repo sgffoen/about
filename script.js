@@ -161,7 +161,7 @@ function showImagePopup() {
   popupContent += '.popup-content { text-align: center; background-color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; }'; // Set container for image and caption
   popupContent += '.image-container { max-height: 90vh; }'; // Limit container height
   popupContent += 'img { max-width: 100%; max-height: 100%; }'; // Limit image size
-  popupContent += '.caption-style { margin-top: 5px; font-family: Helvetica, Arial, sans-serif; font-size: 10px; }';
+  popupContent += '.caption-style { margin-top: 5px; font-family: Arial, sans-serif; font-size: 10px; }';
   popupContent += '</style>';
   popupContent += '</head><body class="popup-content">';
   popupContent += '<div class="image-container">';

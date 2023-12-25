@@ -118,14 +118,6 @@
       color: white;
     }
 
-    .gallery-image {
-      position: relative;
-      width: 375px;
-      height: 375px;
-      background-size: cover;
-      background-position: center;
-    }
-
     .image-caption {
       position: absolute;
       bottom: -30px;
@@ -139,7 +131,13 @@
 
     /* Media query for mobile phones */
     @media (max-width: 767px) {
-
+      .gallery-image {
+        width: 100%;
+        height: auto;
+        background-size: cover;
+        background-position: center;
+      }
+      
       td.description {
         width: 95vw;
         min-width: 95vw;
@@ -175,15 +173,16 @@
         background: none;
         /* Remove the background styling for the 'Category' cell */
       }
-
-      .gallery-image {
-        width: 100%;
-        height: auto;
-        background-size: cover;
-        background-position: center;
-      }
-
     }
+
+    .gallery-image {
+      position: relative;
+      width: 375px;
+      height: 375px;
+      background-size: cover;
+      background-position: center;
+    }
+
   </style>
 
 </head>
